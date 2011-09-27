@@ -12,7 +12,7 @@ puts %Q!general double-quoted string!
 puts %Q{Secondes/day: #{24*60*60}}
 
 # here document
-puts string = <<END_OF_STRING
+puts <<END_OF_STRING
 The body of the string \
 is the input lines up to \
 onde ending with the same \
