@@ -119,5 +119,3 @@ File.open("./songdata") do |song_file|
   puts songs.lookup("RED")
   puts songs.lookup("WoRlD")
 end
-
-  
