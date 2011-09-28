@@ -29,3 +29,7 @@ repository(remote): Remote repository. Git push is performed.
 
 5. push to the remote repository
    git push origin master
+
+6. repository status
+   git status
+   git status -s
