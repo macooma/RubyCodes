@@ -25,6 +25,16 @@ STRING1
   enate
   STRING2
   
+a = "the quick brown fox"
+puts a.sub(/[aeiou]/, '*')
+puts a.gsub(/[aeiou]/, '*')
+puts a.sub(/\s\S+/, '')
+puts a.gsub(/\s\S+/, '')
+puts a.sub(/^./) { |match| match.upcase }
+puts a.gsub(/\S+\s+|\S+$/) { |match| match.sub(/^./) {|firstCh| firstCh.upcase!} }
+# the same as above
+puts a.gsub(/\b\w/) { |first| first.upcase  }
+
 #
 # The use of Ranges
 #
@@ -84,9 +94,9 @@ puts ' word word' !~ c
 def show_regexp(a, re)
   if a =~ re
     "#{$`}<<#{$&}>>#{$'}"
-    puts "$~.class = #{$~.class}"
-    puts "$~ = #{$~}"
-    puts "$~.inspect = #{$~.inspect}"
+#    puts "$~.class = #{$~.class}"
+#    puts "$~ = #{$~}"
+#    puts "$~.inspect = #{$~.inspect}"
   else
     "no match"
   end
@@ -96,3 +106,68 @@ puts show_regexp('very interesting', /t/)
 puts show_regexp('Fats Waller', /a/)
 puts show_regexp('Fats Waller', /ll/)
 puts show_regexp('Fats Waller', /z/)
+
+a = "The moon is made of cheese"
+# \w [a-zA-X0-9_]
+# \W [^a-zA-X0-9_]
+# r?  == r{0,1}
+# ^ $ \A \z \Z \b \B
+puts show_regexp(a, /\w+/)
+puts show_regexp(a, /\s.*\s/)
+puts show_regexp(a, /\s.*?\s/)
+puts show_regexp(a, /[aeiou]{2,99}/)
+puts show_regexp(a, /mo?o/)
+
+puts show_regexp(a, /d|e/)
+puts show_regexp(a, /The|moon/)
+
+puts show_regexp("this is\nthe time", /^the/)
+puts show_regexp("this is\nthe time", /is$/)
+puts show_regexp("this is\nthe time", /\Athis/)
+puts show_regexp("this is\nthe time", /\Athe/)
+puts show_regexp("this is\nthe time", /\bis/)
+puts show_regexp("this is\nthe time", /\Bis/)
+
+#
+# Grouping
+#
+puts
+puts "RegExp grouping"
+puts show_regexp('banana', /an*/)
+puts show_regexp('banana', /(an)*/)
+puts show_regexp('banana', /(an)+/)
+
+a = 'red ball bulue sky'
+puts show_regexp(a, /blue|red/)
+puts show_regexp(a, /(blue|red) \w+/)
+puts show_regexp(a, /red|blue \w+/)
+
+puts show_regexp(a, /red (ball|angry) sky/)
+a = 'the red angry sky'
+puts show_regexp(a, /red (ball|angry) sky/)
+
+puts "12:50am" =~ /(\d\d):(\d\d)([ap]m)/
+puts "Hour is #$1, minite #$2, #$3"
+puts "12:50pm" =~ /(\d\d):(\d\d)([ap]m)/
+puts "Hour is #$1, minite #$2, #$3"
+
+puts "12:50pm" =~ /((\d\d):(\d\d))([ap]m)/
+puts "Time is #$1, hour is #$2, minite is #$3, am/pm is #$4"
+
+# match duplicated letter
+puts show_regexp('He said "Hello"', /(\w)\1/)
+puts show_regexp('He said "Hello"', /(\w{2}).*\1/)
+# match duplicated substrings
+puts show_regexp('Mississippi', /(\w+)\1/)
+
+puts "fred:smith".sub(/(\w+):(\w+)/, '\2, \1') 
+
+# Additional backslash sequences
+# \& (last match),\+ (lastmatched group), \` (string prior to match), \' (string after match), and \\ (a literalbackslash).
+puts
+puts 'a\\b\\c'.gsub(/\\/, '\\\\\\\\')
+# below two are the same as above
+puts 'a\\b\\c'.gsub(/\\/, '\\&\\&')
+puts 'a\\b\\c'.gsub(/\\/) { '\\\\' }
+
+
