@@ -64,4 +64,35 @@ puts (1..10) === 15               #=> false
 puts (1..10) === 3.1415           #=> true
 puts (1..10).include?(3.1415)     #=> true
 
+#while gets
+#  if /start/../end/
+#    puts line 
+#  end
+#end
 
+#
+# The use of Regular(Regexp objects)
+#
+
+a = Regexp.new('^\\S*[a-z]')
+puts 'Word a'.match(a)
+b = /^\S*[a-z]/
+puts 'word word' =~ b
+c = %r{^\S*[a-z]}
+puts ' word word' !~ c
+
+def show_regexp(a, re)
+  if a =~ re
+    "#{$`}<<#{$&}>>#{$'}"
+    puts "$~.class = #{$~.class}"
+    puts "$~ = #{$~}"
+    puts "$~.inspect = #{$~.inspect}"
+  else
+    "no match"
+  end
+end
+
+puts show_regexp('very interesting', /t/)
+puts show_regexp('Fats Waller', /a/)
+puts show_regexp('Fats Waller', /ll/)
+puts show_regexp('Fats Waller', /z/)
