@@ -13,7 +13,7 @@ class MainTest < Test::Unit::TestCase
 
     assert_equal(-1, song1 <=> song2)
     assert_equal(true, song1 < song2)
-    assert_equal(false, song1 == song1)
+    assert_equal(true, song1 == song1)
     assert_equal(false, song1 > song2)
   end
 end
