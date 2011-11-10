@@ -1,0 +1,35 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   >>>>>>>>>>>>  Git   >>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The git code version control system has 3 parts:
+
+Working directory : Directory you are working on, All the add and modify are reflect first here.
+index             : The called 'stage'. When git add/delete/modify operations are performed, they can be reflect here.  
+repository        : Local repository. Git commit is performed.
+repository(remote): Remote repository. Git push is performed.
+
+1. Init a local repository
+   git init
+
+2. add,delete or modify files, put them to index.
+   git add [filename]
+
+3. commit to local repository
+   git commit -m 'comment'
+
+4. add remote
+   git remote add origin https://macooma@github.com/macooma/RubyCodes.git
+
+   show remotes
+   git remote show
+
+   remove remotes
+   git remote rm [remote name]
+
+5. push to the remote repository
+   git push origin master
+
+6. repository status
+   git status
+   git status -s
