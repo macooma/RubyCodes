@@ -6,3 +6,4 @@ puts song1 <=> song2
 puts song1 < song2
 puts song1 == song1
 puts song1 > song2
+

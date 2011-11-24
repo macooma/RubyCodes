@@ -49,3 +49,4 @@ puts op.string.dump
 # Ruby keeps a list of the files loaded by require in the array $".
 # you’ll find the subprocess’s exit code in the global variable $?.
 # $? is a global variable that contains information on the termination of a subprocess
+# The name of the current program is available in the global variable $0.
