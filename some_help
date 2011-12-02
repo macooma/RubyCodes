@@ -33,3 +33,13 @@ repository(remote): Remote repository. Git push is performed.
 6. repository status
    git status
    git status -s
+   
+7. add branch
+   git branch branch_name
+   
+8. switch branch
+   git checkout branch_name 
+   
+9. commit to a new branch
+   git checkout tmp_branch
+   git push origin tmp_branch
